@@ -32,6 +32,6 @@
     - name: deamon reload and service restart
       ansible.builtin.systemd:
         deamon_reload: yes
-        state: restarted
+        state: 
         name: spc    
           
