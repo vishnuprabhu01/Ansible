@@ -24,6 +24,7 @@
       ansible.builtin.file:
         src: spc.service
         dest: /etc/systemd/system/spc.service
+        state: present
     - name: deamon reload and service restart
       ansible.builtin.systemd:
         deamon_reload: yes
