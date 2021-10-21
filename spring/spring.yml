@@ -3,6 +3,11 @@
   hosts: all
   become: yes
   tasks:
+    - name: java installation
+      apt:
+        name: openjdk-11-jdk
+        update_cache: yes
+        state: present 
     - name: create a directory
       ansible.builtin.file:
         path: /usr/share/spc/
@@ -21,10 +26,9 @@
         group: spc
         mode: 0500
     - name: creating service file
-      ansible.builtin.file:
+      ansible.builtin.copy:
         src: spc.service
         dest: /etc/systemd/system/spc.service
-        state: present
     - name: deamon reload and service restart
       ansible.builtin.systemd:
         deamon_reload: yes
